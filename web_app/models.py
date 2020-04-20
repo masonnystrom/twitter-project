@@ -1,5 +1,9 @@
 # web_app/models.py
-from web_app import db 
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+db = SQLAlchemy()
+migrate = Migrate()
 
 class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
