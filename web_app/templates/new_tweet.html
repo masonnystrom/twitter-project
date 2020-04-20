@@ -1,0 +1,25 @@
+<!-- web_app/templates/new_tweets.html -->
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <h1>New Tweet Page</h1>
+
+    <p>Please fill out the form and submit to create a new crypto Tweet!</p>
+
+    <form action="/tweets/create" method="POST">
+
+        <label>Tweet:</label>
+        <input type="text" name="Tweet" placeholder="Tweet about Crypto" value="Tweet about Crypto">
+
+        <label>Twitter User:</label>
+        <select name="Crypto Account">
+          <option value="Ethereum">Eth Bull</option>
+          <option value="Bitcoin">Bitcoin Bull</option>
+          <option value="Zcash">Random bot account</option>
+        </select>
+
+        <button>Submit</button>
+    </form>
+    
+{% endblock %}

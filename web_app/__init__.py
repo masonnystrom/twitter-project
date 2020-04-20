@@ -1,14 +1,29 @@
 # web_app/__init__.py
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 from web_app.routes.home_routes import home_routes
-from web_app.routes.book_routes import book_routes
+from web_app.routes.tweet_routes import tweet_routes
+
+
+db = SQLAlchemy()
+migrate = Migrate()
+
 
 # application factory pattern 
 def create_app():
     app = Flask(__name__)
+    
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///web_app_11.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////Users/mjr/Desktop/twitter-project//web_app.db"
+    # can specif db with an absolute file path like above
+
+    db.init_app(app)
+    migrate.init_app(app, db)
+
     app.register_blueprint(home_routes)
-    app.register_blueprint(book_routes)
+    app.register_blueprint(tweet_routes)
     return app
 
 if __name__ == "__main__":

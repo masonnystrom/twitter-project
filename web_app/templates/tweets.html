@@ -1,0 +1,24 @@
+<!-- web_app/templates/tweets.html -->
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <h1>Crypto Tweets Page</h1>
+
+    <p>{{ message }}</p>
+
+    {% if tweets %}
+        <ul>
+        {% for tweet in tweets %}
+        <li>{{ tweet["tweets"] }}</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>Tweets not found.</p>
+    {% endif %}
+
+    <p>{{ tweets }}</p>
+</html>
+
+{% endblock %}
