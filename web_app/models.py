@@ -10,6 +10,8 @@ class TweetFile(db.Model):
     title = db.Column(db.String(288))
     author_id = db.Column(db.String(128))
 
+
+
 # helper function to transform to json 
 def parse_records(database_records):
     """
