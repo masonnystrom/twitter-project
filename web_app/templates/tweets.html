@@ -8,15 +8,13 @@
     {% if tweets %}
         <ul>
         {% for tweet in tweets %}
-            <li>{{ tweet.title }}</li>
+            <li>{{ tweet.title, tweet.author_id }}</li>
         {% endfor %}
         </ul>
 
     {% else %}
         <p>Tweets not found.</p>
     {% endif %}
-
-    <p>{{ tweets }}</p>
 </html>
 
 {% endblock %}

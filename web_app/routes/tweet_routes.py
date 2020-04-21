@@ -20,11 +20,7 @@ def list_tweets():
 @tweet_routes.route("/tweets")
 def tweets():
     print("VISITED THE TWEETS PAGE")
-    #tweets = [
-    #    {"id": 1, "title": "tweet 1"},
-    #    {"id": 2, "title": "tweet 2"},
-    #    {"id": 3, "title": "tweet 3"},
-    #] 
+   
     # # todo: get from the database
     tweet_records = TweetFile.query.all()
     return render_template("tweets.html", tweets=tweet_records)
@@ -46,5 +42,5 @@ def create_tweet():
     #     "tweet": dict(request.form)
     # })
 
-    flash(f"Tweet '{new_tweet.title}' created successfully!", "success")
+    # flash(f"Tweet '{new_tweet.title}' created successfully!", "success")
     return redirect(f"/tweets")
