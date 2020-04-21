@@ -10,13 +10,13 @@ twitter_routes = Blueprint("twitter_routes", __name__)
 @twitter_routes.route("/users/<screen_name>/fetch")
 def fetch_user_data(screen_name=None):
     print(screen_name)
-
+    api = api_client()
     twitter_user = api.get_user(screen_name)
     statuses = api.user_timeline(screen_name, tweet_mode="extended", count=150, exclude_replies=True, include_rts=False)
     print("STATUSES COUNT:", len(statuses))
 
-    #new_book = Book(title=request.form["book_title"], author_id=request.form["author_name"])
-    #db.session.add(new_book)
+    #new_twitter_user = Tweet(title=request.form["tweet_title"], author_id=request.form["author_name"])
+    #db.session.add(new_twitter_user)
     #db.session.commit()
 
     # STORE USER in database
