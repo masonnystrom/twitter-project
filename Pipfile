@@ -10,6 +10,11 @@ pylint = "*"
 flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+basilica = "*"
+python-dotenv = "*"
+requests = "*"
+tweepy = "*"
+os = "*"
 
 [requires]
 python_version = "3.8"

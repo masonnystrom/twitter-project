@@ -4,7 +4,6 @@ Project for creating a web app
 
 ## Installation
 
-TODO: instructions
 
 ## Setup
 
