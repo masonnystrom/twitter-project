@@ -1,5 +1,6 @@
 <!-- web_app/templates/new_tweets.html -->
 {% extends "layout.html" %}
+{% set active_page = "new_tweets" %}
 
 {% block content %}
 
@@ -10,13 +11,13 @@
     <form action="/tweets/create" method="POST">
 
         <label>Tweet:</label>
-        <input type="text" name="Tweet" placeholder="Tweet about Crypto" value="Tweet about Crypto">
+        <input type="text" name="tweet info" placeholder="Tweet about Crypto" value="Tweet about Crypto">
 
         <label>Twitter User:</label>
-        <select name="Crypto Account">
+        <select name="Twitter Account">
           <option value="Ethereum">Eth Bull</option>
           <option value="Bitcoin">Bitcoin Bull</option>
-          <option value="Zcash">Random bot account</option>
+          <option value="Crypto">Other Crypto</option>
         </select>
 
         <button>Submit</button>

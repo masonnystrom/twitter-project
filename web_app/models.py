@@ -5,9 +5,9 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
-class Tweet(db.Model):
+class TweetFile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    Tweet = db.Column(db.String(288))
+    title = db.Column(db.String(288))
     author_id = db.Column(db.String(128))
 
 # helper function to transform to json 
@@ -21,9 +21,9 @@ def parse_records(database_records):
 
     Returns: a list of dictionaries, each corresponding to a record, like...
         [
-            {"id": 1, "Ethereum": "ETH is money"},
-            {"id": 2, "Bitcoin": "Bitcoin fixes this"},
-            {"id": 3, "Zcash": "Privacy matters"},
+            {"id": 1, "Ethereum": "ETH tweet"},
+            {"id": 2, "Bitcoin": "Bitcoin tweet"},
+            {"id": 3, "Other Crypto": "crypto tweet"},
         ]
     """
     parsed_records = []

@@ -1,16 +1,14 @@
 <!-- web_app/templates/tweets.html -->
 {% extends "layout.html" %}
+{% set active_page = "tweets" %}
 
 {% block content %}
 
     <h1>Crypto Tweets Page</h1>
-
-    <p>{{ message }}</p>
-
     {% if tweets %}
         <ul>
         {% for tweet in tweets %}
-        <li>{{ tweet["tweets"] }}</li>
+            <li>{{ tweet.title }}</li>
         {% endfor %}
         </ul>
 
