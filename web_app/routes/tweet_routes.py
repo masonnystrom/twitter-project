@@ -1,6 +1,6 @@
 # web_app/routes/tweet_routes.py
 
-from flask import Blueprint, jsonify, render_template, request, redirect, flash
+from flask import Blueprint, jsonify, render_template, request, redirect
 from web_app.models import db, TweetFile, parse_records
 
 tweet_routes = Blueprint("tweet_routes", __name__)
@@ -8,11 +8,6 @@ tweet_routes = Blueprint("tweet_routes", __name__)
 @tweet_routes.route("/tweets.json")
 def list_tweets():
     print("REQUESTED THE Tweets IN JSON FORMAT")
-    #tweets = [
-    #    {"id": 1, "title": "tweet 1"},
-    #    {"id": 2, "title": "tweet 2"},
-    #    {"id": 3, "title": "tweet 3"},
-    #] # todo: get from the database
     tweet_records = TweetFile.query.all()
     tweets = parse_records(tweet_records)
     return jsonify(tweets)
@@ -36,10 +31,4 @@ def create_tweet():
     db.session.add(new_tweet)
     db.session.commit()
     
-    # return jsonify({
-    #     "message": "Tweet CREATED OK (TODO)",
-    #     "tweet": dict(request.form)
-    # })
-
-    # flash(f"Tweet '{new_tweet.title}' created successfully!", "success")
     return redirect(f"/tweets")
