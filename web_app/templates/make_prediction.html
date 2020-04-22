@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% set active_page = "/" %}
+
+{% block content %}
+    <h2>Prediction Time</h2>
+
+    <p>Use the form below to predict which user is more likely to say a given tweet...</p>
+
+    <form action="/make_prediction/results" method="POST">
+
+        <label>Twitter User A:</label>
+        <select name="screen_name_a">
+            <option value="naval" selected="true">@naval</option>
+            <option value="ryan selkis">@twobitidiot</option>
+            <option value="chamath">@chamath</option>
+        </select>
+        <br>
+
+        <label>Twitter User B:</label>
+        <select name="screen_name_b">
+            <option value="naval">@naval</option>
+            <option value="ryan selkis" selected="true">@twobitidiot</option>
+            <option value="chamath">@chamath</option>
+          </select>
+        <br>
+
+        <label>Tweet Text:</label>
+        <input type="text" name="tweet_text" placeholder="Buy Bitcoin" value="buy bitcoin">
+        <br>
+
+        <button>Submit</button>
+    </form>
+{% endblock %}

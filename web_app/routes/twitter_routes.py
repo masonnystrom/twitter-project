@@ -1,6 +1,6 @@
 # web_app/routes/twitter_routes.py
 from flask import Blueprint, jsonify, render_template, redirect 
-from web_app.models import * 
+from web_app.models import TweetFile, Tweet, User, db, parse_records 
 from web_app.services.twitter_service import api_client
 from web_app.services.basilica_service import connection as basilica_connection
 
