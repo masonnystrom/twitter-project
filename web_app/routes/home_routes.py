@@ -8,12 +8,12 @@ home_routes = Blueprint("home_routes", __name__)
 
 @home_routes.route("/")
 def index():
-    users = User.query.all()
-    user_list = []
-    for user in users:
-        user_list.append(user.name)
-    print(user_list)
-    return render_template("index.html", userlist=users)
+    # users = User.query.all()
+    # user_list = []
+    # for user in users:
+    #     user_list.append(user.name)
+    # print(user_list)
+    # return render_template("index.html", userlist=users)
 
 @home_routes.route("/about")
 def about():
