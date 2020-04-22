@@ -21,7 +21,6 @@ def list_tweets():
 def tweets():
     print("VISITED THE TWEETS PAGE")
    
-    # # todo: get from the database
     tweet_records = TweetFile.query.all()
     return render_template("tweets.html", tweets=tweet_records)
 

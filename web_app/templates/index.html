@@ -1,0 +1,30 @@
+<!-- # web_app/templates/users.html  -->
+
+{% extends "layout.html" %}
+{% set active_page = "/" %}
+
+{% block content %}
+
+    <h1>Crypto Twitter Account Finder</h1>
+
+    <p>Simply select a twitter account and get a record of all their tweets</p>
+
+    <form action="/users" method="POST">
+        <label>Twitter Account (@handle without the @):</label>
+        <input type="text" name="username" placeholder="naval">
+
+        <button>Get tweets</button>
+    </form>
+    
+    <!-- <h2>Crypto Tweets Page</h2>
+    {% if users %}
+        <ul>
+        {% for user in user_list %}
+            <a href={{"/users/" + user.screen_name}}>{{user.name}}</a>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>User not found.</p>
+    {% endif %} -->
+
+{% endblock %}

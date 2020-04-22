@@ -1,5 +1,5 @@
 # web_app/routes/twitter_routes.py
-from flask import Blueprint, jsonify 
+from flask import Blueprint, jsonify, render_template, redirect 
 from web_app.models import * 
 from web_app.services.twitter_service import api_client
 from web_app.services.basilica_service import connection as basilica_connection
@@ -41,11 +41,12 @@ def fetch_user_data(screen_name=None):
     for status in statuses:
         print(status.full_text)
         print("----")
-        #print(dir(status))
+
         # get existing tweet from the db or initialize a new one:
         db_tweet = Tweet.query.get(status.id) or Tweet(id=status.id)
         db_tweet.user_id = status.author.id # or db_user.id
         db_tweet.full_text = status.full_text
+        
         #embedding = basilica_connection.embed_sentence(status.full_text, model="twitter") # todo: prefer to make a single request to basilica with all the tweet texts, instead of a request per tweet
         embedding = embeddings[counter]
         print(len(embedding))
@@ -53,6 +54,5 @@ def fetch_user_data(screen_name=None):
         db.session.add(db_tweet)
         counter+=1
     db.session.commit()
-
     return "OK"
-    #return render_template("user.html", user=db_user, tweets=statuses) # tweets=db_tweets
+    # return render_template("user.html", user=db_user, tweets=statuses) 
