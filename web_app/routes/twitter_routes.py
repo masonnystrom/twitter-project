@@ -15,10 +15,6 @@ def fetch_user_data(screen_name=None):
     statuses = api.user_timeline(screen_name, tweet_mode="extended", count=150, exclude_replies=True, include_rts=False)
     print("STATUSES COUNT:", len(statuses))
 
-    #new_twitter_user = Tweet(title=request.form["tweet_title"], author_id=request.form["author_name"])
-    #db.session.add(new_twitter_user)
-    #db.session.commit()
-
     # STORE USER in database
 
     # get existing user from the db or initialize a new one:
@@ -56,3 +52,21 @@ def fetch_user_data(screen_name=None):
     db.session.commit()
     return "OK"
     # return render_template("user.html", user=db_user, tweets=statuses) 
+
+
+@twitter_routes.route("/users")
+def list_users_human_friendly():
+    db_users = User.query.all()
+    return render_template("users.html", users=db_users)
+
+@twitter_routes.route("/users.json")
+def list_users():
+    db_users = User.query.all()
+    users_response = parse_records(db_users)
+    return jsonify(users_response)
+
+@twitter_routes.route("/users/<screen_name>")
+def get_user(screen_name=None):
+    print(screen_name)
+    db_user = User.query.filter(User.screen_name == screen_name).one()
+    return render_template("user.html", user=db_user, tweets=db_user.tweets)
