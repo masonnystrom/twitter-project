@@ -1,20 +1,27 @@
 # web_app/__init__.py
 from flask import Flask
-from web_app.models import db, migrate
+import os 
+from dotenv import load_dotenv
 
+
+from web_app.models import db, migrate
 from web_app.routes.home_routes import home_routes
 from web_app.routes.tweet_routes import tweet_routes
 from web_app.routes.twitter_routes import twitter_routes
 from web_app.routes.admin_routes import admin_routes
 from web_app.routes.stats_routes import stats_routes
 
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
+ #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///web_app_11.db"
 
 # application factory pattern 
 def create_app():
     app = Flask(__name__)
     
-    #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///web_app_11.db"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////Users/masonnystrom/Desktop/twitter-project/web_app.db"
+    app.config["SECRET_KEY"] = SECRET_KEY
     # can specif db with an absolute file path like above
     db.init_app(app)
     migrate.init_app(app, db)
