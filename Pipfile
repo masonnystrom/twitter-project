@@ -1,7 +1,7 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
 verify_ssl = true
+url = "https://pypi.org/simple"
 
 [dev-packages]
 pylint = "*"
@@ -14,7 +14,6 @@ basilica = "*"
 python-dotenv = "*"
 requests = "*"
 tweepy = "*"
-os = "*"
 sklearn = "*"
 scikit-learn = "*"
 gunicorn = "*"
