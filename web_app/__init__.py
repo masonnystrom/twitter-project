@@ -19,11 +19,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
 # application factory pattern 
 def create_app():
     app = Flask(__name__)
-    
     app.config["SECRET_KEY"] = SECRET_KEY # required for flash messaging
     
     # configure the database:
-    app.config["SQLALCHEMY_DATABASE_URL"] = DATABASE_URL
+    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # suppress warning messages
     
     db.init_app(app)
