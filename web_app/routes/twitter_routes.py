@@ -12,7 +12,7 @@ def fetch_user_data(screen_name=None):
     print(screen_name)
     api = api_client()
     twitter_user = api.get_user(screen_name)
-    statuses = api.user_timeline(screen_name, tweet_mode="extended", count=200, exclude_replies=False, include_rts=True)
+    statuses = api.user_timeline(screen_name, tweet_mode="extended", count=200)
     print("STATUSES COUNT:", len(statuses))
 
     # STORE USER in database

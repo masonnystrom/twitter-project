@@ -15,14 +15,17 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
- #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///web_app_11.db"
 
 # application factory pattern 
 def create_app():
     app = Flask(__name__)
     
-    app.config["SECRET_KEY"] = SECRET_KEY
-    # can specif db with an absolute file path like above
+    app.config["SECRET_KEY"] = SECRET_KEY # required for flash messaging
+    
+    # configure the database:
+    app.config["SQLALCHEMY_DATABASE_URL"] = DATABASE_URL
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # suppress warning messages
+    
     db.init_app(app)
     migrate.init_app(app, db)
 
